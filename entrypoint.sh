@@ -7,3 +7,4 @@ cd /
 npm install
 node /graph.js /github/workspace
 ls -salh
+cp /output.pdf /github/home
