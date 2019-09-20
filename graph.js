@@ -8,12 +8,11 @@ function countLines(extension, workdir) {
   return parseInt(buffer.toString().trim());
 }
 
-function buildData(dir) {
+function buildData(workdir) {
 
-  const workdir = process.cwd() + "/" + dir;
   const out = childProcess.execSync("git --no-pager log --pretty=format:\"%H %cd\"", {cwd: workdir});
   const commits = out.toString().split("\n");
-
+  console.dir(commits);
   const result = [];
 
   let count = 1;
