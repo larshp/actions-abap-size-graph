@@ -6,3 +6,4 @@ pwd
 cd /
 npm install
 node /graph.js /github/workspace
+ls -salh
