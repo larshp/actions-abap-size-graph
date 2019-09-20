@@ -1,4 +1,4 @@
-FROM node:lts
+FROM ubuntu:latest
 
 ADD entrypoint.sh /entrypoint.sh
 ADD graph.js /graph.js
