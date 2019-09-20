@@ -1,5 +1,5 @@
 #!/bin/sh
-apt-get install node
+apt-get update
 ls
 pwd
 cd /
