@@ -1,0 +1,9 @@
+name: actions-abap-size-graph
+description: actions-abap-size-graph
+author: larshp
+branding:
+  color: blue
+  icon: cloud-drizzle
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
