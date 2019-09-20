@@ -126,7 +126,7 @@ const html = buildHtml(buildData(process.argv[2]));
 fs.writeFileSync("index.html", html);
 
 (async () => {
-  const browser = await puppeteer.launch();
+  const browser = await puppeteer.launch({args: ['--no-sandbox']});
   const page = await browser.newPage();
   await page.setViewport({width: 900, height: 1440, deviceScaleFactor: 2});
   await page.setContent(html);
