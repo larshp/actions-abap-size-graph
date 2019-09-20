@@ -29,14 +29,14 @@ function buildData(workdir) {
       date: new Date(commit.substr(41)).toJSON(),
       abap_lines: countLines("abap", workdir),
       xml_lines: countLines("xml", workdir)});
-
+/*
     try {
       childProcess.execSync("git checkout - --quiet", {cwd: workdir, stdio: "inherit"});
     } catch (e) {
 // strange error, just break
       break;
     }
-
+*/
   }
 
   return result;
