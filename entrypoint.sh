@@ -3,4 +3,4 @@ ls
 pwd
 cd /
 npm install
-node /graph.js sdfsd
+node /graph.js /github/workspace
