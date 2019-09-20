@@ -8,9 +8,9 @@ function countLines(extension, workdir) {
   return parseInt(buffer.toString().trim());
 }
 
-function buildData() {
+function buildData(dir) {
 
-  const workdir = process.cwd() + "/../json.abap/";
+  const workdir = process.cwd() + "/" + dir;
   const out = childProcess.execSync("git --no-pager log --pretty=format:\"%H %cd\"", {cwd: workdir});
   const commits = out.toString().split("\n");
 
@@ -122,7 +122,7 @@ let raw = ` + JSON.stringify(data, null, 1) + `;
 
 // -------------------------
 
-const html = buildHtml(buildData());
+const html = buildHtml(buildData(process.argv[2]));
 
 fs.writeFileSync("index.html", html);
 
