@@ -29,14 +29,7 @@ function buildData(workdir) {
       date: new Date(commit.substr(41)).toJSON(),
       abap_lines: countLines("abap", workdir),
       xml_lines: countLines("xml", workdir)});
-/*
-    try {
-      childProcess.execSync("git checkout - --quiet", {cwd: workdir, stdio: "inherit"});
-    } catch (e) {
-// strange error, just break
-      break;
-    }
-*/
+
   }
 
   return result;
@@ -125,7 +118,7 @@ const html = buildHtml(buildData(process.argv[2]));
 
 fs.writeFileSync("index.html", html);
 
-(async () => {
+async function run() {
   const browser = await puppeteer.launch({args: ['--no-sandbox']});
   const page = await browser.newPage();
   await page.setViewport({width: 900, height: 1440, deviceScaleFactor: 2});
@@ -133,6 +126,12 @@ fs.writeFileSync("index.html", html);
   await page.pdf({path: 'output.pdf',
     margin: { left: '1cm', top: '2cm', right: '1cm', bottom: '1cm' },
     format: "A4"});
-
   await browser.close();
-})();
+};
+
+run().then(() => {
+  process.exit();
+}).catch((err) => {
+  console.log(err);
+  process.exit(1);
+});
